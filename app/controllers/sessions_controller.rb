@@ -6,7 +6,7 @@ class SessionsController < ApplicationController
     # Finding user Id with email associated with.
     @user = User.find_by(email: session_params[:email]) 
 
-    # if/else, checks if the user exists and they are allowed to authenticate.
+    # if/else, checks if the user password is correct or not, if its correct session starts
     if @user && @user.authenticate(session_params[:password]) 
       session[:user_id] = @user.id 
       flash[:success] = 'Log In successfully.' 

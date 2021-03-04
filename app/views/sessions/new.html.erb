@@ -1,6 +1,6 @@
 <p>Log In</p>
 <%- if flash[:error] %>
-<%= flash[:error] %>
+  <%= flash[:error] %>
 <% end %>
 
 <%= form_for :session, url: sessions_path do |f| %>
@@ -12,6 +12,7 @@
 <% end %>
 
 <p>
- New User? <%= link_to 'Sign Up', signup_path %><br
- Back <%= link_to 'Home', root_path %>
+  New User? <%= link_to 'Sign Up', signup_path %><br>
+  Back <%= link_to 'Home', root_path %>
 </p>
+

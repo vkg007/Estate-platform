@@ -6,7 +6,7 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params) 
 
-    # if user get save succesully else  again transmit to sign up page
+    # if user data get saved successfully session start else again transmit to sign up page
     if @user.save
       session[:user_id] = @user.id
       flash[:success] =  'You have successfully created an account!'
@@ -20,3 +20,4 @@ class UsersController < ApplicationController
     params.require(:user).permit(:first_name, :last_name, :email, :mobile, :password, :password_confirmation, :pic)
   end
 end
+

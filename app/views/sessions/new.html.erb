@@ -1,0 +1,17 @@
+<p>Log In</p>
+<%- if flash[:error] %>
+<%= flash[:error] %>
+<% end %>
+
+<%= form_for :session, url: sessions_path do |f| %>
+  <%= f.label :email %>
+  <%= f.email_field :email, placeholder: 'Email' %><br><br>
+  <%= f.label :password %>
+  <%= f.password_field :password, placeholder: 'Password' %>
+  <%= f.submit 'Log In' %>
+<% end %>
+
+<p>
+ New User? <%= link_to 'Sign Up', signup_path %><br
+ Back <%= link_to 'Home', root_path %>
+</p>

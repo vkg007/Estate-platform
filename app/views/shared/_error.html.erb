@@ -1,0 +1,10 @@
+<h3>All fields are required and Password should be 6-40 in length</h3>
+
+<% if target.errors.any? %>
+  <p>Please correct the following errors:</p>
+  <ul>
+    <% target.errors.full_messages.each do |msg| %>
+       <li><%= msg %></li>
+    <% end %>
+  </ul>
+<% end %>

@@ -1,0 +1,49 @@
+<h1><span class="badge badge-dark">SIGN UP</span></h1>
+
+<%= render "shared/error_messages", :target => @user %>
+
+<%= form_for @user  do |f| %>
+  <div class="form-group">
+    <%= f.label :first_name %>
+    <div class="col-md-5">
+      <%= f.text_field :first_name ,class: 'form-control',placeholder: 'First Name' %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :last_name %>
+     <div class="col-md-5">
+       <%= f.text_field :last_name ,class: 'form-control',placeholder: 'Last Name'%>
+     </div>
+  <div class="form-group">
+    <%= f.label :email %>
+    <div class="col-md-5">
+      <%= f.email_field :email,class: 'form-control',placeholder: 'Email' %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :mobile %>
+    <div class="col-md-3">
+      <%= f.text_field :mobile,class: 'form-control',placeholder: 'Mobile Number' %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :password %>
+    <div class="col-md-4">
+      <%= f.password_field :password,class: 'form-control',placeholder: 'Password' %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :password_confirmation %>
+     <div class="col-md-4">
+       <%= f.password_field :password_confirmation,class: 'form-control',placeholder: 'Confirm Password'%>
+     </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :picture %>
+    <%= f.file_field :pic,class: "input-group-text",placeholder: 'pic' %>
+  </div>
+
+  <div class="form-group">
+    <%= f.submit 'Register', class: 'btn btn-success' %>
+  </div>
+<% end %>

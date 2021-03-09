@@ -1,0 +1,21 @@
+<h1><span class="badge badge-dark">LOG IN</span></h1>
+
+<%= render "shared/flash_messages"%>
+
+<%= form_for :session, url: sessions_path do |f| %>
+  <div class="form-group">
+    <%= f.label :email %>
+    <div class="col-md-4">
+      <%= f.email_field :email, class: 'form-control', placeholder: 'Email' %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :password %>
+    <div class="col-md-4">
+      <%= f.password_field :password, class: 'form-control',placeholder: 'Password' %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.submit 'Log In', class: 'btn btn-primary' %>
+  </div>
+<% end %>

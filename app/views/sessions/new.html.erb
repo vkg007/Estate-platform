@@ -1,16 +1,21 @@
-<p>Log In</p>
+<h1><span class="badge badge-dark">LOG IN</span></h1>
 
 <%= render "shared/flash_messages"%>
 
-<%= form_for :session, url: sessions_path do |f| %>
-  <%= f.label :email %>
-  <%= f.email_field :email, placeholder: 'Email' %><br><br>
-  <%= f.label :password %>
-  <%= f.password_field :password, placeholder: 'Password' %>
-  <%= f.submit 'Log In' %>
-<% end %>
-
-<p>
-  New User? <%= link_to 'Sign Up', new_user_path %><br>
-  Back <%= link_to 'Home', root_path %>
-</p>
+<div class="container h-100">
+  <div class="row h-100 justify-content-center align-items-center">
+    <%= form_for :session, class: "col-12", url: sessions_path do |f| %>
+      <div class="form-group">
+        <%= f.label :email %>
+        <%= f.email_field :email, class: 'form-control', placeholder: 'Email' %>
+      </div>
+      <div class="form-group">
+        <%= f.label :password %>
+        <%= f.password_field :password, class: 'form-control', placeholder: 'Password' %>
+      </div>
+      <div class="form-group">
+        <%= f.submit 'Log In', class: 'btn btn-primary' %>
+      </div>
+    <% end %>
+  </div>
+</div>

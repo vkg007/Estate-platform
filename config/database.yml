@@ -84,4 +84,3 @@ test:
 production:
   <<: *default
   database: estate_production
-  

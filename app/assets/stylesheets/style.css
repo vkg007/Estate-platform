@@ -13,3 +13,20 @@ footer {
   color: black;
   text-align: center;
 }
+
+.logo {
+  height: 100px;
+  width: 100px; 
+}
+
+.alert {
+  left: 0;
+  margin: auto; // Centers alert component
+  position: absolute; // So that it will display relative to the entire page
+  right: 0;
+  text-align: center; // Centers 'Alert Test' text
+  top: 1em;
+  width: 40%;
+  height: 50px;
+  z-index: 1; // Displays over app and bootstrap Navbar    
+}

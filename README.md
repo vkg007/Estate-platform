@@ -28,7 +28,7 @@ Estate-Platform is an online website for real state purchase or sell.Anyone usin
 
 * * *
 
-You can try out a demo at 
+You can try out a demo at [click me](https://estatevkg.herokuapp.com/)
 
 ## Prerequisites
 

@@ -1,4 +1,4 @@
-<%= render "shared/error_messages", :target => @user %>
+<%= render "shared/error_messages", target: @user %>
 <%= render "shared/flash_messages"%>
 <div class="container h-100">
   <div class="row h-100 justify-content-center align-items-center">
@@ -32,7 +32,7 @@
           <%= f.label :New_password_confirmation %>
           <%= f.password_field :password_confirmation, class: 'form-control', placeholder: 'Confirm New Password'%>
         </div>
-      <%else%>
+      <% else %>
         <div class="form-group">
           <%= f.label :password %>
           <%= f.password_field :password, class: 'form-control', placeholder: 'Password' %>
@@ -41,7 +41,7 @@
           <%= f.label :password_confirmation %>
           <%= f.password_field :password_confirmation, class: 'form-control', placeholder: 'Confirm Password'%>
         </div>
-      <%end%>
+      <% end %>
       <div class="form-group">
         <%= f.label :picture %>
         <%= f.file_field :pic, class: "input-group-text", placeholder: 'pic' %>

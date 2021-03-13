@@ -44,5 +44,9 @@ class UsersController < ApplicationController
 
   def find_user
     @user = User.find(params[:id])
+    return if @user
+
+    flash[:error] = 'User not found'
+    redirect_to root_path
   end
 end

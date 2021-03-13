@@ -10,7 +10,8 @@
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink-333" data-toggle="dropdown"
         aria-haspopup="true" aria-expanded="false">
-        <i class="fas fa-user"></i> Hi <%= current_user.first_name %>
+          <i class="fas fa-user"></i> 
+          Hi <%= current_user.first_name %>
         </a>
         <div class="dropdown-menu dropdown-menu-right dropdown-default"
           aria-labelledby="navbarDropdownMenuLink-333">
@@ -25,6 +26,6 @@
       <li class="nav-item">
         <a class="nav-link" <%= link_to 'Login', new_session_path %></a>
       </li>
-    <% end%>
+    <% end %>
   </ul>
 </nav>

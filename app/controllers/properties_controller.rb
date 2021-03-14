@@ -1,13 +1,19 @@
 class PropertiesController < ApplicationController
-  before_action :find_property, only: %i[edit update]
+  before_action :find_user
+  before_action :find_property, only: %i[show edit update destroy]
+
   def new
-    @property = Property.new
+    @property = @user.properties.build
   end
- 
+
+  def index
+    @properties = @user.properties
+  end
+
   def edit; end
 
   def create
-    @property = Property.new(property_params)
+    @property = @user.properties.build(property_params)
     if @property.save
       flash[:success] = 'Property details inserted successfully!'
       redirect_to root_path
@@ -26,11 +32,11 @@ class PropertiesController < ApplicationController
   end
 
   def destroy
-    @property = Property.find(current_user.id)
     if @property.destroy
       flash[:success] = 'Property details deleted successfully.'
       redirect_to root_path
     else
+      flash[:error] = 'Property details not deleted successfully.'
       render :edit
     end
   end
@@ -44,6 +50,14 @@ class PropertiesController < ApplicationController
   end
 
   def find_property
-    @property = Property.find(params[:id])
+    @property = @user.properties.find(params[:id])
+  end
+
+  def find_user
+    @user = User.find_by_id(params[:user_id])
+    return if current_user == @user
+
+    flash[:error] = 'User not found/You can edit only your details'
+    redirect_to root_path
   end
 end

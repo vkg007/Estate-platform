@@ -3,7 +3,7 @@
 <div class="row">
   <div class="col-md-12 mx-0">
     <div id="msform">
-      <%= form_for @property do |f| %>
+      <%= form_for ([ @user, @property ])do |f| %>
         <ul id="progressbar">
           <li class="active" id="account"><strong>Basics Details</strong></li>
           <li id="personal"><strong>More details</strong></li>
@@ -15,7 +15,7 @@
             <h2 class="fs-title">Basic Property Information</h2>
             <%= f.text_field :title, placeholder: 'write Title' %>
             <%= f.text_field :built_area, placeholder: 'Build area in sq meter' %>
-            <%= f.hidden_field :user_id, :value => current_user.id %>
+            <%= f.hidden_field :user_id, value: current_user.id %>
             <%= f.text_field :carpet_area, placeholder: 'Carpet Area in sq meter' %>
             <%= f.text_field :available_for, placeholder: 'Available for bachelor, couple' %>
           </div>
@@ -51,7 +51,7 @@
           <input type="button" name="previous" class="previous action-button-previous" value="Previous" />
           <%= f.submit 'Submit', class: 'btn btn-success' %>
         </fieldset>
-      <%end%>
+      <% end %>
     </div>
   </div>
 </div>

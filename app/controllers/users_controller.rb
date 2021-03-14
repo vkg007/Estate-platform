@@ -43,10 +43,10 @@ class UsersController < ApplicationController
   end
 
   def find_user
-    @user = User.find(params[:id])
-    return if @user
+    @user = User.find_by_id(params[:id])
+    return if current_user == @user
 
-    flash[:error] = 'User not found'
+    flash[:error] = 'User not found/You can edit only your details'
     redirect_to root_path
   end
 end

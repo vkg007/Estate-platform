@@ -9,14 +9,14 @@ class PropertiesController < ApplicationController
   def index
     @properties = @user.properties
   end
-
+ 
   def edit; end
 
   def create
     @property = @user.properties.build(property_params)
     if @property.save
       flash[:success] = 'Property details inserted successfully!'
-      redirect_to root_path
+      redirect_to new_property_address_path(@property)
     else
       render :new
     end

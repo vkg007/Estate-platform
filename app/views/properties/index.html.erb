@@ -11,10 +11,12 @@
       <div class="card-body text-center mx-auto">
         <h5 class="card-title"><%= property.title %></h5>
         <p class="card-text"><%= property.description %></p>
-        <h1 class="card-title"> Address </h1>
-        <p class="card-title"><%= property.address.city %></p>
-        <p class="card-text"><%= property.address.pincode %></p>
-        <p class="card-text"><%= property.address.full_address %></p>
+        <% if property.address.present? %>
+          <h1 class="card-title"> Address </h1>
+          <p class="card-title"><%= property.address.city %></p>
+          <p class="card-text"><%= property.address.pincode %></p>
+          <p class="card-text"><%= property.address.full_address %></p>
+        <% end %>
       </div>
     </div>
   </div>

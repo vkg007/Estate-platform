@@ -1,12 +1,12 @@
 <h1> My properties</h1>
-<%@properties.each do |property| %>
+<% @properties.each do |property| %>
   <div class='container-fluid'>
     <div class="card mx-auto col-md-3 col-10 mt-5 pt-4">
       <div class="d-flex sale ">
         <div class="btn"><%= link_to 'Edit',    edit_user_property_path(current_user.id, property.id) %></div>
         <div class="btn"><%= button_to 'Delete', [@user, property], method: :delete, data: { confirm: 'Are you sure?' } %> </div>
       </div>
-      <%= image_tag("home.jpg", class: "home", :alt => "logo") %>
+      <%= image_tag("home.jpg", class: "home", alt: "logo") %>
       <div class="card-body text-center mx-auto">
         <h5 class="card-title"><%= property.title %></h5>
         <p class="card-text"><%= property.description %></p>

@@ -1,13 +1,13 @@
 class PropertiesController < ApplicationController
   before_action :find_user
-  before_action :find_property, only: %i[show edit update destroy]
-
-  def new
-    @property = @user.properties.build
-  end
+  before_action :find_property, only: %i[edit update destroy]
 
   def index
     @properties = @user.properties
+  end
+
+  def new
+    @property = @user.properties.build
   end
 
   def edit; end
@@ -44,13 +44,17 @@ class PropertiesController < ApplicationController
   private
 
   def property_params
-    params.require(:property).permit(:title, :built_area, :user_id, :carpet_area, :posted_date, :available_for,
+    params.require(:property).permit(:title, :built_area, :carpet_area, :posted_date, :available_for,
                                      :floor_no, :type_of, :total_floor, :age, :bedrooms, :bathrooms, :balcony,
                                      :parking_area, :description)
   end
 
   def find_property
-    @property = @user.properties.find(params[:id])
+    @property = @user.properties.find_by_id(params[:id])
+    return if @property
+
+    flash[:error] = 'property Not Found'
+    redirect_to root_path
   end
 
   def find_user

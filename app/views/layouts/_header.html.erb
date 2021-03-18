@@ -11,14 +11,15 @@
         <a class="nav-link" <%= link_to 'Sale property', new_user_property_path(current_user.id) %></a>
       </li>
       <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink-333" data-toggle="dropdown"
-           aria-haspopup="true" aria-expanded="false">
+        <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink-333" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
            <i class="fas fa-user"></i> 
            Hi <%= current_user.first_name %>
         </a>
         <div class="dropdown-menu dropdown-menu-right dropdown-default"aria-labelledby="navbarDropdownMenuLink-333">
           <a class="dropdown-item" <%= link_to 'Edit', edit_user_path(current_user.id) %></a>
-          <a class="dropdown-item" <%= link_to 'My ads', user_properties_path(current_user.id) %></a>
+          <a class="dropdown-item" <%= link_to 'My Properties', user_properties_path(current_user.id) %></a>
+          <a class="dropdown-item" <%= link_to 'My adresses', user_addresses_path(current_user.id) %></a>
+          <a class="dropdown-item" <%= link_to 'Add Address', new_user_address_path(current_user.id) %></a>
           <a class="dropdown-item" <%= link_to 'Log Out', logout_path %> </a>
         </div>
       </li>

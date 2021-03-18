@@ -5,3 +5,20 @@
 <% if current_user %>
   <h1> Welcome <%= current_user.first_name %> <%= current_user.last_name %> to Estate.com </h1>
 <% end %>
+
+<h3>List of properties for sale </h3>
+<div class="row">
+  <% @properties.each do |property| %>
+    <div class="col-md-6">
+      <div class="card mx-auto col-md-6 mt-5 pt-4">
+        <div class="d-flex sale ">
+        </div>
+        <%= image_tag("home.jpg", class: "home", alt: "logo") %>
+        <div class="card-body text-center mx-auto">
+          <h5 class="card-title"><%= property.title %></h5>
+          <p class="card-text"><%= property.description %></p>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>

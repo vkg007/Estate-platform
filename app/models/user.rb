@@ -1,7 +1,7 @@
 class User < ApplicationRecord
   has_secure_password
-  has_many :properties, dependent: :delete_all
-  has_many :addresses, as: :addressable, dependent: :delete_all
+  has_many :properties, dependent: :destroy
+  has_many :addresses, as: :addressable, dependent: :destroy
 
   validates :email, uniqueness: true, presence: true
   validates :mobile, uniqueness: true, presence: true

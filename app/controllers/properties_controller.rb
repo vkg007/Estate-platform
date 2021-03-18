@@ -1,6 +1,6 @@
 class PropertiesController < ApplicationController
   before_action :find_user
-  before_action :find_property, only: %i[show edit update destroy]
+  before_action :find_property, only: %i[edit update destroy]
 
   def index
     @properties = @user.properties

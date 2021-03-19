@@ -48,3 +48,25 @@ body {
   height: 300px;
   width: 400px;
 }
+
+.title {
+  font-family: "Lucida Console", "Courier New", monospace;
+  font-weight: 400;
+  font-size: 70px;
+}
+.sub_title {
+  font-weight: 400;
+  font-size: 40px;
+  color: black;
+}
+
+.contract {
+  background-color: white;
+  color: black;
+  text-align: center;
+
+}
+
+.details {
+  text-align: left;
+}

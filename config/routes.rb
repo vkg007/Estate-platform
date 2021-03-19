@@ -4,9 +4,10 @@ Rails.application.routes.draw do
   resources :sessions, only: %i[new create]
   resources :users, only: %i[new create edit update] do
     resources :addresses, except: %i[show]
-    resources :properties, except: %i[show]
+    resources :properties
+    resources :contracts
   end
-  resources :properties, except: %i[show] do
+  resources :properties do
     resources :addresses, except: %i[show]
   end
 end

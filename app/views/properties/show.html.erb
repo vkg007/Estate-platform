@@ -1,0 +1,77 @@
+<!-- Page Content -->
+<div class="container">
+  <!-- Portfolio Item Heading -->
+  <h1 class="title"><u><%= @property.title.upcase %></u></h1>
+  <!-- Portfolio Item Row -->
+  <div class="row">
+    <div class="col-md-8">
+      <% if @property.images.attached? %>
+        <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+          <div class="carousel-inner">
+            <% @property.images.each_with_index do |image,counter| %>
+              <% if counter == 0 %>
+                <div class="carousel-item active" >
+                  <%= image_tag(image, class: "img-fluid", alt: "home") %>
+                </div>
+              <% else %>
+                <div class="carousel-item">
+                  <%= image_tag(image, class: "img-fluid", alt: "home") %>
+                </div>
+              <% end %>
+            <% end %>
+          </div>
+          <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+          </a>
+          <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+          </a>
+        </div>
+      <% end %>
+    </div>
+    <div class="col-md-4">
+      <h3 class="sub_title">Property Description</h3>
+      <h2><%= @property.description %></h2>
+      <h2 class="sub_title">Property Details</h2>
+      <h3>Area:<small> <%= @property.built_area %> sq.meter </small></h3>
+      <h3>Bedrooms:<small> <%= @property.bedrooms %></small></h3>
+      <h3>Bathrooms:<small> <%= @property.bathrooms %></small></h3>
+      <h3>Available For:<small> <%= @property.available_for %></small></h3>
+      <h3>Type:<small> <%= @property.type_of %></small></h3>
+      <h3>Balcony:<small> <%= @property.balcony %></small></h3>
+      <h3>Parking Area:<small> <%= @property.parking_area %> sq meter</small></h3>
+      <h3>Build Date:<small> <%= @property.age %></small></h3>
+      <h3>Floor No:<small> <%= @property.floor_no %></small></h3>
+      <h3>Total Floors:<small> <%= @property.total_floor %></small></h3>
+      <h3 class="sub_title"> Address </h3>
+      <% if @property.address.present? %>
+        <h3>City:<small> <%=  @property.address.city %></small></h3>
+        <h3>Pincode:<small> <%=  @property.address.city %></small></h3>
+        <h3>Full Address:<small> <%= @property.address.full_address %></small></h3>
+      <% end %>
+    </div>
+    <% if current_user %>
+      <%= link_to 'Buy', new_user_contract_path(current_user.id, property_id: @property.id), class: "btn btn-primary" %>
+    <% end %>
+  </div>
+  <h3 class="my-4">Seller Details</h3>
+  <div class="row">
+    <div class="col-md-8">
+      <%= image_tag(@property.user.image, class: "home", alt: "logo") %>
+    </div>
+    <div class="col-md-4">
+      <h3 class="sub_title">Seller Description</h3>
+      <h3>Name:<small> <%= @property.user.first_name%>  <%= @property.user.last_name%></small></h3>
+      <h3>Contact No:<small> <%= @property.user.mobile%>  </small></h3>
+      <h3>Email:<small> <%= @property.user.email%>  </small></h3>
+      <h3 class="sub_title"> Address </h3>
+      <% if  @property.user.addresses.first.present? %>
+        <h3>City:<small> <%=  @property.user.addresses.first.city %></small></h3>
+        <h3>Pincode:<small> <%=  @property.user.addresses.first.pincode %></small></h3>
+        <h3>Full Address:<small> <%= @property.user.addresses.first.full_address %></small></h3>
+      <% end %>
+    </div>
+  </div>
+</div>

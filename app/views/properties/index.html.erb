@@ -1,23 +1,59 @@
 <h1> My properties</h1>
-<% @properties.each do |property| %>
-  <div class='container-fluid'>
-    <div class="card mx-auto col-md-3 col-10 mt-5 pt-4">
-      <div class="d-flex sale ">
-        <div class="btn"><%= link_to 'Edit Property', edit_user_property_path(current_user.id, property.id) %></div>
-        <div class="btn"><%= link_to 'Edit Address', edit_property_address_path(property.id, property.address.id) %></div>
-        <div class="btn"><%= button_to 'Delete', [@user, property], method: :delete, data: { confirm: 'Are you sure?' } %></div>
+<div class="container">
+  <div class="row">
+    <% @properties.each do |property| %>
+      <div class="col-sm-6">
+        <div class="card">
+          <div class="d-flex sale ">
+            <div class="btn"><%= link_to 'Edit Property', edit_user_property_path(current_user.id, property.id) %></div>
+            <div class="btn"><%= link_to 'Edit Address', edit_property_address_path(property.id, property.address.id) %></div>
+            <div class="btn"><%= button_to 'Delete', [@user, property], method: :delete, data: { confirm: 'Are you sure?' } %></div>
+          </div>
+          <% if property.images.attached? %>
+            <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+              <div class="carousel-inner">
+                <% property.images.each_with_index do |image,counter| %>
+                  <% if counter == 0 %>
+                    <div class="carousel-item active" >
+                      <%= image_tag(image, class: "home", alt: "home") %>
+                    </div>
+                  <% else %>
+                    <div class="carousel-item">
+                      <%= image_tag(image, class: "home", alt: "home") %>
+                    </div>
+                  <% end %>
+                <% end %>
+              </div>
+              <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+              </a>
+              <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+              </a>
+            </div>
+          <% end %>
+          <div class="card-body">
+            <h2 class="card-title"><%= property.title %></h2>
+            <h6 class="card-subtitle mb-2 text-muted">Description : <%= property.description %></h6>
+            <h3 class="card-title"> Address </h3>
+            <% if property.address.present? %>
+              <p class="card-title">
+                <%=  property.address.city %>
+                <%= property.address.pincode %>
+                <%= property.address.full_address %>
+              </p>
+            <% end %>
+            <div class="buy d-flex justify-content-between align-items-center">
+              <div class="price text-success">
+                <h5 class="mt-4"></h5>
+                Bedroom : <%= property.bedrooms %></div>
+              <a href="#" class="btn btn-danger mt-3"><i class="fas fa-shopping-cart"></i> Show Details</a>
+            </div>
+          </div>
+        </div>
       </div>
-      <%= image_tag("home.jpg", class: "home", alt: "logo") %>
-      <div class="card-body text-center mx-auto">
-        <h5 class="card-title"><%= property.title %></h5>
-        <p class="card-text"><%= property.description %></p>
-        <% if property.address.present? %>
-          <h1 class="card-title"> Address </h1>
-          <p class="card-title"><%= property.address.city %></p>
-          <p class="card-text"><%= property.address.pincode %></p>
-          <p class="card-text"><%= property.address.full_address %></p>
-        <% end %>
-      </div>
-    </div>
+    <% end %>
   </div>
-<% end %>
+</div>

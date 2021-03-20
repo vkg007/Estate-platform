@@ -54,6 +54,7 @@ ActiveRecord::Schema.define(version: 2021_03_18_095537) do
     t.index ["addressable_type", "addressable_id"], name: "index_addresses_on_addressable"
   end
 
+
   create_table "contracts", force: :cascade do |t|
     t.bigint "user_id"
     t.bigint "property_id"

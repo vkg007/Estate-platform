@@ -6,8 +6,7 @@
         <div class="card">
           <div class="d-flex sale ">
             <div class="btn"><%= link_to 'Edit Property', edit_user_property_path(current_user.id, property.id) %></div>
-            <div class="btn"><%= link_to 'Edit Address', edit_property_address_path(property.id, property.address.id) %>
-              </div>
+            <div class="btn"><%= link_to 'Edit Address', edit_property_address_path(property.id, property.address.id) %></div>
             <div class="btn"><%= button_to 'Delete', [@user, property], method: :delete, data: { confirm: 'Are you sure?' } %></div>
           </div>
           <% if property.images.attached? %>
@@ -50,7 +49,11 @@
               <div class="price text-success">
                 <h5 class="mt-4"></h5>
                 Bedroom : <%= property.bedrooms %></div>
+<<<<<<< HEAD
               <div class="btn"><%= link_to 'Show Details', property_path(property.id) %></div>
+=======
+              <a href="#" class="btn btn-danger mt-3"><i class="fas fa-shopping-cart"></i> Show Details</a>
+>>>>>>> master
             </div>
           </div>
         </div>

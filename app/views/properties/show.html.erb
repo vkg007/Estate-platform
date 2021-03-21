@@ -5,7 +5,7 @@
       <% if @property.images.attached? %>
         <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
           <div class="carousel-inner">
-            <% @property.images.each_with_index do |image,counter| %>
+            <% @property.images.each_with_index do |image, counter| %>
               <% if counter == 0 %>
                 <div class="carousel-item active" >
                   <%= image_tag(image, class: "img-fluid", alt: "home") %>
@@ -42,11 +42,12 @@
       <h3>Build Date:<small> <%= @property.age %></small></h3>
       <h3>Floor No:<small> <%= @property.floor_no %></small></h3>
       <h3>Total Floors:<small> <%= @property.total_floor %></small></h3>
+      <% address = @property.address %>
       <h3 class="sub_title"> Address </h3>
       <% if @property.address.present? %>
-        <h3>City:<small> <%=  @property.address.city %></small></h3>
-        <h3>Pincode:<small> <%=  @property.address.city %></small></h3>
-        <h3>Full Address:<small> <%= @property.address.full_address %></small></h3>
+        <h3>City:<small> <%= address.city %></small></h3>
+        <h3>Pincode:<small> <%= address.pincode %></small></h3>
+        <h3>Full Address:<small> <%= address.full_address %></small></h3>
       <% end %>
     </div>
     <% if current_user %>
@@ -56,18 +57,20 @@
   <h3 class="my-4">Seller Details</h3>
   <div class="row">
     <div class="col-md-8">
-      <%= image_tag(@property.user.image, class: "home", alt: "logo") %>
+      <% user = @property.user %>
+      <%= image_tag(user.image, class: "home", alt: "logo") %>
     </div>
     <div class="col-md-4">
       <h3 class="sub_title">Seller Description</h3>
-      <h3>Name:<small> <%= @property.user.first_name%>  <%= @property.user.last_name%></small></h3>
-      <h3>Contact No:<small> <%= @property.user.mobile%>  </small></h3>
-      <h3>Email:<small> <%= @property.user.email%>  </small></h3>
+      <h3>Name:<small> <%= user.first_name %>  <%= user.last_name %></small></h3>
+      <h3>Contact No:<small> <%= user.mobile %>  </small></h3>
+      <h3>Email:<small> <%= user.email %>  </small></h3>
       <h3 class="sub_title"> Address </h3>
-      <% if  @property.user.addresses.first.present? %>
-        <h3>City:<small> <%=  @property.user.addresses.first.city %></small></h3>
-        <h3>Pincode:<small> <%=  @property.user.addresses.first.pincode %></small></h3>
-        <h3>Full Address:<small> <%= @property.user.addresses.first.full_address %></small></h3>
+      <% user_address = @property.user.addresses.first %>
+      <% if  user_address.present? %>
+        <h3>City:<small> <%=  user_address.city %></small></h3>
+        <h3>Pincode:<small> <%=  user_address.pincode %></small></h3>
+        <h3>Full Address:<small> <%= user_address.full_address %></small></h3>
       <% end %>
     </div>
   </div>

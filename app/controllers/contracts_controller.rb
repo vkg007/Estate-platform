@@ -3,7 +3,7 @@ class ContractsController < ApplicationController
   before_action :find_contract, only: %i[show edit update destroy]
 
   def index
-    @contracts = Contract.joins(:property).where(user_id: @user)
+    @contracts = Contract.list_of_contracts(@user)
     return if @contracts
 
     flash[:error] = 'Contract Not Found'
@@ -11,7 +11,7 @@ class ContractsController < ApplicationController
   end
 
   def show
-    @contract = Contract.joins(:property, :user).where(id: params[:id]).first
+    @contract = Contract.single_contract_detail(params[:id])
     return if @contract
 
     flash[:error] = 'Contract Not Found'

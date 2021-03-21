@@ -12,7 +12,7 @@
           <% if property.images.attached? %>
             <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
               <div class="carousel-inner">
-                <% property.images.each_with_index do |image,counter| %>
+                <% property.images.each_with_index do |image, counter| %>
                   <% if counter == 0 %>
                     <div class="carousel-item active" >
                       <%= image_tag(image, class: "home", alt: "home") %>
@@ -38,12 +38,13 @@
             <h1 class="card-subtitle mb-2 text-muted"><%= property.title %></h1>
             <h6 class="card-subtitle mb-2 text-muted">Description : <%= property.description %></h6>
             <h3 class="card-subtitle mb-2 text-muted"> Address: </h3>
-            <% if property.address.present? %>
-              <div class="card-subtitle mb-2 text-muted">
-                <%=  property.address.city %>
-                <%= property.address.pincode %>
-                <%= property.address.full_address %>
-              </div>
+           <% address = property.address %>
+            <% if address.present? %>
+              <p class="card-title">
+                <%= address.city %>
+                <%= address.pincode %>
+                <%= address.full_address %>
+              </p>
             <% end %>
             <div class="buy d-flex justify-content-between align-items-center">
               <div class="price text-success">

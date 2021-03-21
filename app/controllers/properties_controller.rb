@@ -11,7 +11,7 @@ class PropertiesController < ApplicationController
   end
 
   def show
-    @property = Property.joins(:user).where(id: params[:id]).first
+    @property = Property.single_property_details(params[:id])
     return if @property
 
     flash[:error] = 'property Not Found'

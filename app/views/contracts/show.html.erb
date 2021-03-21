@@ -1,13 +1,18 @@
 <div class="contract">
   <div class="container">
     <h1><strong>Commercial lease agreement</strong></h1>
+    <div>
+      <% property = @contract.property %>
+      <% address =  @contract.property.address %>
+      <% user =  @contract.user %>
+    <div>
     <div class="details">
-      This Lease agreement is made on this <b><u>___<%= @contract.created_at.strftime("%d-%A") %>___</u></b> day of <b><u>___ <%= @contract.created_at.strftime("%B") %>___</u></b> (Month),<b><u>___<%= @contract.created_at.strftime("%Y") %>___ </u></b> (Year) by and between  <b><u>___<%= @contract.property.user.first_name %>_<%= @contract.property.user.last_name %>____ </u></b> (here in after "Landlord")  AND  <b><u>___<%= @contract.user.first_name %>_<%= @contract.user.last_name %> ___</u></b>(here in after "Tenant") for The property Title <b><u>___<%= @contract.property.title %>___</u></b> at address:
+      This Lease agreement is made on this <b><u>___<%= @contract.created_at.strftime("%d-%A") %>___</u></b> day of <b><u>___ <%= @contract.created_at.strftime("%B") %>___</u></b> (Month),<b><u>___<%= @contract.created_at.strftime("%Y") %>___ </u></b> (Year) by and between  <b><u>___<%= property.user.first_name %>_<%= property.user.last_name %>____ </u></b> (here in after "Landlord")  AND  <b><u>___<%= user.first_name %>_<%= user.last_name %> ___</u></b>(here in after "Tenant") for The property Title <b><u>___<%= property.title %>___</u></b> at address:
       <b><u>
-          <% if @contract.property.address.present? %>
-            <%= @contract.property.address.full_address %>, 
-            <%=  @contract.property.address.city %>
-            (<%= @contract.property.address.pincode %>)
+          <% if address.present? %>
+            <%= address.full_address %>, 
+            <%= address.city %>
+            (<%= address.pincode %>)
           <% end %>
         </u></b>
       In consideration for the shared promises and agreements contained herein, and for other good and valuable consideration, the parties hereby agree as follows:
@@ -24,7 +29,7 @@
         </li>
         <li>  This Lease is subject to all present or prospect mortgages affecting the property.</li>
         <li>
-          Tenant shall use and inhabit the building only as a <b><u>___<%= @contract.property.type_of%>___</u></b> (Tenant Rental Status) subject at all times to the approval of the Landlord.
+          Tenant shall use and inhabit the building only as a <b><u>___<%= property.type_of%>___</u></b> (Tenant Rental Status) subject at all times to the approval of the Landlord.
         </li>
         <li>
           The Tenant shall not make any amendments, additions or improvements to the building without the prior written permission of the Landlord.
@@ -32,14 +37,14 @@
         <li>
           The property-owner, at his own cost, shall equip the following utilities or facilities for the benefit of the occupant:
           <b><u>
-              <h5>Area:<small> <%= @contract.property.built_area %> sq.meter </small></h5>
-              <h5>Bedrooms:<small> <%= @contract.property.bedrooms %></small></h5>
-              <h5>Bathrooms:<small> <%= @contract.property.bathrooms %></small></h5>
-              <h5>Balcony:<small> <%= @contract.property.balcony %></small></h5>
-              <h5>Parking Area:<small> <%= @contract.property.parking_area %> sq meter</small></h5>
-              <h5>Build Date:<small> <%= @contract.property.age %></small></h5>
-              <h5>Floor No:<small> <%= @contract.property.floor_no %></small></h5>
-              <h5>Total Floors:<small> <%= @contract.property.total_floor %></small></h5>
+              <h5>Area:<small> <%= property.built_area %> sq.meter </small></h5>
+              <h5>Bedrooms:<small> <%= property.bedrooms %></small></h5>
+              <h5>Bathrooms:<small> <%= property.bathrooms %></small></h5>
+              <h5>Balcony:<small> <%= property.balcony %></small></h5>
+              <h5>Parking Area:<small> <%= property.parking_area %> sq meter</small></h5>
+              <h5>Build Date:<small> <%= property.age %></small></h5>
+              <h5>Floor No:<small> <%= property.floor_no %></small></h5>
+              <h5>Total Floors:<small> <%= property.total_floor %></small></h5>
             </u>
           </b>
         </li>
@@ -70,9 +75,9 @@
         Signed on  <b><u>___<%= Time.now.strftime("%d,%A") %>___</u></b>day of <b><u>___<%= Time.now.strftime("%B") %></u></b> (Month) <b><u>___<%= Time.now.strftime("%Y") %>___</u></b>  (Year)
       </ol>
       <h3>Tenant:</h3>
-      <b><%= @contract.user.first_name %> <%= @contract.user.last_name %></b>
+      <b><%= user.first_name %> <%= user.last_name %></b>
       <h3>Lanlord:</h3>
-      <b><%= @contract.property.user.first_name %> <%= @contract.property.user.last_name %></b>
+      <b><%= property.user.first_name %> <%= property.user.last_name %></b>
     </div>
     <button onclick="window.print()">Print</button>
   </div>

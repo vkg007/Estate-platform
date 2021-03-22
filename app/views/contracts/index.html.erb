@@ -4,8 +4,8 @@
       <div class="col-sm-6">
         <div class="card">
           <div class="card-body">
-            <div class="btn"><%= link_to 'Edit contract',  edit_user_contract_path(current_user.id, contract.id) %></div>
-            <div class="btn"><%= link_to 'show contract',  user_contract_path(current_user.id, contract.id) %></div>
+            <div class="btn"><%= link_to 'Edit contract', edit_user_contract_path(current_user.id, contract.id) %></div>
+            <div class="btn"><%= link_to 'show contract', user_contract_path(current_user.id, contract.id) %></div>
             <div class="btn"><%= button_to 'Delete', [@user, contract], method: :delete, data: { confirm: 'Are you sure?' } %></div>
             <h2 class="card-title">&#8377;<%= contract.final_price %></h2>
             <% property = contract.property %>

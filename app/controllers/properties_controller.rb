@@ -11,7 +11,7 @@ class PropertiesController < ApplicationController
   end
 
   def show
-    @property = Property.single_property_details(params[:id])
+    @property = Property.includes(:user).find_by_id(params[:id])
     return if @property
 
     flash[:error] = 'property Not Found'

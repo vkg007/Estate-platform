@@ -12,5 +12,4 @@ class Property < ApplicationRecord
                        .where.not('properties.user_id = ?', user_id)
   }
   scope :without_contract, -> { includes(:contract).references(:contract).where('property_id IS NULL') }
-  scope :single_property_details, ->(property_id) { joins(:user).where('properties.id = ?', property_id).first }
 end

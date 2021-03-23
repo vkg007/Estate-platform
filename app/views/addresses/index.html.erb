@@ -1,14 +1,12 @@
+<%= render "shared/flash_messages" %>
 <h1> My Address</h1>
 <% @addresses.each do |address| %>
-  <div class='container-fluid'>
+<div class="clearfix" id="address_<%= address.id %>">
+  <div class='container-fluid'  >
     <div class="card mx-auto col-md-3 col-10 mt-5 pt-4">
       <div class="d-flex sale ">
-        <div class="btn">
-          <%= button_to 'Delete', [current_user, address], method: :delete, data: { confirm: 'Are you sure?' }%>
-        </div>
-        <div class="btn">
-          <%= link_to 'Edit', edit_user_address_path(current_user,address) %>
-        </div>
+        <%= link_to 'Delete', [current_user, address], method: :delete, data: { confirm: 'Are you sure?' },remote: true, class: 'btn btn-primary btn-sm'%>
+        <%= link_to 'Edit', edit_user_address_path(current_user,address), class: 'btn btn-primary btn-sm' %>
       </div>
       <div class="card-body text-center mx-auto">
         <h5 class="card-title"><%= address.city %></h5>
@@ -17,4 +15,5 @@
       </div>
     </div>
   </div>
+</div>
 <% end %>

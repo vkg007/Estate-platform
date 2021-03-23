@@ -1,28 +1,10 @@
-<h1>Estate Platform Buy Or Sell </h1>
-<%= render "shared/flash_messages" %>
-<% if current_user %>
-  <h1> Welcome <%= current_user.first_name %> <%= current_user.last_name %> to Estate.com </h1>
-<% end %>
+<h1> Search Result</h1>
 <div class="container">
-  <p>Type something in the input field to search</p>
-  <div class="form-row">
-    <div class="form-group col-md-3">
-      <label for="inputEmail4">Bedroom filter</label>
-      <input class="form-control" id="myInput" value="bedroom: "  type="text" placeholder="number of bedroom">
-    </div>
-    <div class="form-group col-md-3">
-      <label for="inputEmail4">city filter</label>
-      <input type="email" class="form-control" id="myInput2" placeholder="city name ..mumbai">
-    </div>
-  </div>
-</div>
-<h3>List of properties for sale </h3>
-<div class="container">
-  <div class="row" id="myTable">
+  <div class="row">
     <% @properties.each do |property| %>
-      <div class="col-sm-6" >
+      <div class="col-sm-6">
         <div class="card">
-        <% if property.images.attached? %>
+          <% if property.images.attached? %>
             <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
               <div class="carousel-inner">
                 <% property.images.each_with_index do |image, counter| %>
@@ -51,7 +33,7 @@
             <h1 class="card-subtitle mb-2 text-muted"><%= property.title %></h1>
             <h6 class="card-subtitle mb-2 text-muted">Description : <%= property.description %></h6>
             <h3 class="card-subtitle mb-2 text-muted"> Address: </h3>
-            <% address = property.address %>
+           <% address = property.address %>
             <% if address.present? %>
               <p class="card-title">
                 <%= address.city %>
@@ -62,8 +44,7 @@
             <div class="buy d-flex justify-content-between align-items-center">
               <div class="price text-success">
                 <h5 class="mt-4"></h5>
-                Bedroom: <%= property.bedrooms %>
-              </div>
+                Bedroom : <%= property.bedrooms %></div>
               <div class="btn"><%= link_to 'Show Details', property_path(property.id), class: 'btn btn-success' %></div>
             </div>
           </div>

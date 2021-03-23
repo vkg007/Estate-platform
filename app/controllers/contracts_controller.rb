@@ -3,7 +3,7 @@ class ContractsController < ApplicationController
   before_action :find_contract, only: %i[show edit update destroy]
 
   def index
-    @contracts = Contract.list_of_contracts(@user)
+    @contracts = @user.contracts.includes(:property)
     return if @contracts
 
     flash[:error] = 'Contract Not Found'
@@ -45,8 +45,9 @@ class ContractsController < ApplicationController
 
   def destroy
     if @contract.destroy
-      flash[:success] = 'Contract deleted successfully.'
-      redirect_to root_path
+      respond_to do |format|
+        format.js
+      end
     else
       flash[:error] = 'Contract not deleted successfully.'
       render :index

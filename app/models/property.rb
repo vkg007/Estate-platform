@@ -7,11 +7,9 @@ class Property < ApplicationRecord
   validates :title, :built_area, :carpet_area, :available_for, :floor_no,
             :type_of, :age, :bedrooms, :bathrooms, :parking_area, :description, presence: true
 
-  scope :without_contract_user, lambda { |user_id|
+  scope :without_contract_user, ->(user_id) {
     includes(:contract).references(:contract).where('property_id IS NULL')
                        .where.not('properties.user_id = ?', user_id)
   }
   scope :without_contract, -> { includes(:contract).references(:contract).where('property_id IS NULL') }
-
-  scope :filtered, ->(query_params) { Story::Filter.new.filter(self, query_params) }
 end

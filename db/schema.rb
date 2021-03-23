@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_15_101725) do
+ActiveRecord::Schema.define(version: 2021_03_18_095537) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -52,6 +52,23 @@ ActiveRecord::Schema.define(version: 2021_03_15_101725) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["addressable_type", "addressable_id"], name: "index_addresses_on_addressable"
+  end
+
+
+  create_table "contracts", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "property_id"
+    t.integer "final_price"
+    t.date "start_date"
+    t.date "end_date"
+    t.string "transaction_id"
+    t.string "payment_mode"
+    t.string "contract_type"
+    t.text "details"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["property_id"], name: "index_contracts_on_property_id"
+    t.index ["user_id"], name: "index_contracts_on_user_id"
   end
 
   create_table "properties", force: :cascade do |t|

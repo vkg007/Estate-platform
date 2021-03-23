@@ -1,9 +1,21 @@
 class PropertiesController < ApplicationController
-  before_action :find_user
-  before_action :find_property, only: %i[edit update destroy]
+  before_action :find_user, except: %i[show]
+  before_action :find_user_property, only: %i[edit update destroy]
 
   def index
     @properties = @user.properties
+    return if @properties
+
+    flash[:error] = 'User has no property.'
+    redirect_to root_path
+  end
+
+  def show
+    @property = Property.includes(:user).find_by_id(params[:id])
+    return if @property
+
+    flash[:error] = 'property Not Found'
+    redirect_to root_path
   end
 
   def new
@@ -37,7 +49,7 @@ class PropertiesController < ApplicationController
       redirect_to root_path
     else
       flash[:error] = 'Property details not deleted successfully.'
-      render :edit
+      render :index
     end
   end
 
@@ -49,7 +61,7 @@ class PropertiesController < ApplicationController
                                      :parking_area, :description)
   end
 
-  def find_property
+  def find_user_property
     @property = @user.properties.find_by_id(params[:id])
     return if @property
 

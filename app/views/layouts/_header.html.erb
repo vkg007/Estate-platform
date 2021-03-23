@@ -22,6 +22,7 @@
         <div class="dropdown-menu dropdown-menu-right dropdown-default"aria-labelledby="navbarDropdownMenuLink-333">
           <a class="dropdown-item" <%= link_to 'Edit', edit_user_path(current_user.id) %></a>
           <a class="dropdown-item" <%= link_to 'My Properties', user_properties_path(current_user.id) %></a>
+          <a class="dropdown-item" <%= link_to 'My Contracts', user_contracts_path(current_user.id) %></a>
           <a class="dropdown-item" <%= link_to 'My adresses', user_addresses_path(current_user.id) %></a>
           <a class="dropdown-item" <%= link_to 'Add Address', new_user_address_path(current_user.id) %></a>
           <a class="dropdown-item" <%= link_to 'Log Out', logout_path %> </a>

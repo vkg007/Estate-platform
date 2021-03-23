@@ -1,0 +1,84 @@
+<div class="contract">
+  <div class="container">
+    <h1><strong>Commercial lease agreement</strong></h1>
+    <div>
+      <% property = @contract.property %>
+      <% address =  @contract.property.address %>
+      <% user =  @contract.user %>
+    <div>
+    <div class="details">
+      This Lease agreement is made on this <b><u>___<%= @contract.created_at.strftime("%d-%A") %>___</u></b> day of <b><u>___ <%= @contract.created_at.strftime("%B") %>___</u></b> (Month),<b><u>___<%= @contract.created_at.strftime("%Y") %>___ </u></b> (Year) by and between  <b><u>___<%= property.user.first_name %>_<%= property.user.last_name %>____ </u></b> (here in after "Landlord")  AND  <b><u>___<%= user.first_name %>_<%= user.last_name %> ___</u></b>(here in after "Tenant") for The property Title <b><u>___<%= property.title %>___</u></b> at address:
+      <b><u>
+          <% if address.present? %>
+            <%= address.full_address %>, 
+            <%= address.city %>
+            (<%= address.pincode %>)
+          <% end %>
+        </u></b>
+      In consideration for the shared promises and agreements contained herein, and for other good and valuable consideration, the parties hereby agree as follows:
+      <ol>
+        <li>
+          The Landlord leases to the Tenant, and the Tenant rents from the Landlord the following stated grounds:
+        </li>
+        <li>
+          The tenure of the Lease shall be for <b><u>___<%= (@contract.end_date - @contract.start_date).to_i %> Days___</u></b> beginning<b><u>___<%= @contract.start_date.strftime("%d,%B,%Y") %>___</u></b> and ending <b><u>___<%= @contract.end_date.strftime("%d,%B,%Y") %>___</u></b>
+        </li>
+        <li>
+          The Tenant shall pay to Landlord as Lease price <b> &#8377;<u>___<%= @contract.final_price%>___</u></b>.
+          Transacation Id is <b><u>___<%= @contract.transaction_id%>___</u></b> and Mode of Payment  is : <b><u>___<%= @contract.payment_mode%>___</u></b>
+        </li>
+        <li>  This Lease is subject to all present or prospect mortgages affecting the property.</li>
+        <li>
+          Tenant shall use and inhabit the building only as a <b><u>___<%= property.type_of%>___</u></b> (Tenant Rental Status) subject at all times to the approval of the Landlord.
+        </li>
+        <li>
+          The Tenant shall not make any amendments, additions or improvements to the building without the prior written permission of the Landlord.
+        </li>
+        <li>
+          The property-owner, at his own cost, shall equip the following utilities or facilities for the benefit of the occupant:
+          <b><u>
+              <h5>Area:<small> <%= property.built_area %> sq.meter </small></h5>
+              <h5>Bedrooms:<small> <%= property.bedrooms %></small></h5>
+              <h5>Bathrooms:<small> <%= property.bathrooms %></small></h5>
+              <h5>Balcony:<small> <%= property.balcony %></small></h5>
+              <h5>Parking Area:<small> <%= property.parking_area %> sq meter</small></h5>
+              <h5>Build Date:<small> <%= property.age %></small></h5>
+              <h5>Floor No:<small> <%= property.floor_no %></small></h5>
+              <h5>Total Floors:<small> <%= property.total_floor %></small></h5>
+            </u>
+          </b>
+        </li>
+        <li>
+          The leaseholder shall purchase at his own cost public liability insurance in the amount of &#8377;<b> <u>___<%= (@contract.final_price)*0.50%>___</u></b> as well as fire and exposure insurance in the amount of &#8377;<b> <u>___<%= (@contract.final_price)*0.25%>___</u></b> for the property and shall provide satisfactory proof thereof to the property-owner and shall continue same in force and effect throughout the Lease period hereof.
+        </li>
+        <li>
+          The leaseholder shall not let or commit waste to the property.
+        </li>
+        <li>
+          The leaseholder shall meet the terms, policies, order codes and laws of all governmental establishments having authority over the property.
+        </li>
+        <li>
+          The Tenant shall not allow or engage in any activity that will affect an increase in the rate of insurance for the Building in which the property is not contained nor shall the leaseholder allow or commit any annoyance thereon.
+        </li>
+        <li>
+          The lessee shall not sublet or allocate the neither property nor consent to any other person or business to use or occupy the property without the earlier written approval of the Landlord, which permission may not be unduly withdrawn.
+        </li>
+        <li>
+          At the end of the period of this Lease, the lessee shall give in and deliver up the property in the same condition (subject to any additions, alterations or improvements, if any) as presently exists, realistic wear and tear expelled.
+        </li>
+        <li>
+          Upon evasion in any term or condition of this Lease, the owner shall have the right to embark on any or all other remedies allowable by Law. 
+        </li>
+        <li>
+          This Lease shall be binding upon, and inure to the benefit of, the parties, their beneficiaries, successors, and assigns.
+        </li>
+        Signed on  <b><u>___<%= Time.now.strftime("%d,%A") %>___</u></b>day of <b><u>___<%= Time.now.strftime("%B") %></u></b> (Month) <b><u>___<%= Time.now.strftime("%Y") %>___</u></b>  (Year)
+      </ol>
+      <h3>Tenant:</h3>
+      <b><%= user.first_name %> <%= user.last_name %></b>
+      <h3>Lanlord:</h3>
+      <b><%= property.user.first_name %> <%= property.user.last_name %></b>
+    </div>
+    <button onclick="window.print()">Print</button>
+  </div>
+</div>

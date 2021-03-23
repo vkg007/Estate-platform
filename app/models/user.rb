@@ -1,9 +1,9 @@
 class User < ApplicationRecord
   has_secure_password
- 
-  has_one_attached :image, dependent: :destroy
   has_many :properties, dependent: :destroy
   has_many :addresses, as: :addressable, dependent: :destroy
+  has_one_attached :image, dependent: :destroy
+  has_many :contracts, dependent: :destroy
 
   validates :email, uniqueness: true, presence: true
   validates :mobile, uniqueness: true, presence: true

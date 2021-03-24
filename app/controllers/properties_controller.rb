@@ -47,7 +47,9 @@ class PropertiesController < ApplicationController
   def destroy
     if @property.destroy
       flash[:success] = 'Property details deleted successfully.'
-      format.js
+      respond_to do |format|
+        format.js
+      end
     else
       flash[:error] = 'Property details not deleted successfully.'
       render :index

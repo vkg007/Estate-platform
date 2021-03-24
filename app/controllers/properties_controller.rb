@@ -38,7 +38,6 @@ class PropertiesController < ApplicationController
     if @property.update(property_params)
       flash[:success] = 'Property details Edited successfully.'
       render :index
-      format.js
     else
       render :edit
     end

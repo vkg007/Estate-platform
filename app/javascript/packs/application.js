@@ -4,8 +4,10 @@
 // that code so it'll be compiled.
 //= require jquery
 //= require jquery_ujs
-import 'bootstrap'
+require("packs/property/filter")
+require("packs/property/multi_step_form")
 require("jquery")
+import 'bootstrap'
 import Rails from "@rails/ujs"
 import Turbolinks from "turbolinks"
 import * as ActiveStorage from "@rails/activestorage"
@@ -19,24 +21,6 @@ ActiveStorage.start()
 
 
 
-$(document).ready(function(){
-  $("#myInput").on("keyup", function() {
-    var value = $(this).val().toLowerCase();
-    $("#myTable .col-sm-6").filter(function() {
-      console.log(value);
-      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
-    });
-  });
-});
 
-$(document).ready(function(){
-  $("#myInput2").on("keyup", function() {
-    var value = $(this).val().toLowerCase();
-    $("#myTable .col-sm-6").filter(function() {
-      console.log(value);
-      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
-    });
-  });
-});
 
 

@@ -18,9 +18,3 @@ window.$ = window.jquery = jquery;
 Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
-
-
-
-
-
-

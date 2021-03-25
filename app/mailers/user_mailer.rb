@@ -2,7 +2,7 @@ class UserMailer < ApplicationMailer
   default from: 'vivekrails007@gmail.com'
   def welcome_email(user)
     @user = user
-    mail(to: @user.email, subject: 'Welcome to My Awesome Site')
+    mail(to: @user.email, subject: 'Welcome to My Estate.com')
   end
 
   def contract_email(contract)

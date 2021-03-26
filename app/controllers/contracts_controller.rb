@@ -25,8 +25,7 @@ class ContractsController < ApplicationController
   def create
     @contract = @user.contracts.build(contracts_params)
     if @contract.save
-      @contract_single = Contract.single_contract_detail(@contract.id)
-      UserMailer.contract_email(@contract_single).deliver_now
+      ContractJob.perform_later(@contract.id)
       flash[:success] = 'Contract details inserted successfully!'
       redirect_to root_path
     else

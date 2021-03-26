@@ -19,7 +19,7 @@ class AddressesController < ApplicationController
 
     if @address.save
       flash[:success] = 'Address details saved successfully.'
-      redirect_to root_path
+      redirect_to user_addresses_path(current_user)
     else
       flash[:error] = 'Address details not saved successfully.'
       render :new
@@ -39,10 +39,12 @@ class AddressesController < ApplicationController
   def destroy
     if @address.destroy
       flash[:success] = 'Address details deleted successfully.'
-      redirect_to root_path
+      respond_to do |format|
+        format.js
+      end
     else
-      flash[:error] = 'Address details not deleted successfully.'
-      render :index
+      flash[:success] = 'Address details not deleted successfully.'
+      redirect_to root_path
     end
   end
 

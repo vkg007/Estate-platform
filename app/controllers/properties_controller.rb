@@ -1,5 +1,5 @@
 class PropertiesController < ApplicationController
-  before_action :find_user, except: %i[show]
+  before_action :find_user, except: %i[show search]
   before_action :find_user_property, only: %i[edit update destroy]
 
   def index
@@ -37,7 +37,7 @@ class PropertiesController < ApplicationController
   def update
     if @property.update(property_params)
       flash[:success] = 'Property details Edited successfully.'
-      redirect_to root_path
+      render :index
     else
       render :edit
     end
@@ -46,10 +46,30 @@ class PropertiesController < ApplicationController
   def destroy
     if @property.destroy
       flash[:success] = 'Property details deleted successfully.'
-      redirect_to root_path
+      respond_to do |format|
+        format.js
+      end
     else
       flash[:error] = 'Property details not deleted successfully.'
       render :index
+    end
+  end
+
+  def result; end
+
+  def search
+    if params[:search].blank?
+      flash[:error] = 'property blank'
+      redirect_to root_path
+    else
+      @search_val = params[:search]
+      @properties = Property.all.includes(:user).where('title LIKE ?', "%#{@search_val}%")
+      if @properties
+        render :result
+      else
+        flash[:error] = 'property not found'
+        redirect_to root_path
+      end
     end
   end
 

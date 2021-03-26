@@ -47,8 +47,9 @@ class ContractsController < ApplicationController
 
   def destroy
     if @contract.destroy
-      flash[:success] = 'Contract deleted successfully.'
-      redirect_to root_path
+      respond_to do |format|
+        format.js
+      end
     else
       flash[:error] = 'Contract not deleted successfully.'
       render :index

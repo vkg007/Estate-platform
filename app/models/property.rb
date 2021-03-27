@@ -2,7 +2,7 @@ class Property < ApplicationRecord
   belongs_to :user
   has_one :contract, dependent: :destroy
   has_one :address, as: :addressable, dependent: :destroy
-  has_many_attached :images, dependent: :destroy
+  has_many_attached :images
   validates :title, uniqueness: true, presence: true
   validates :title, :built_area, :carpet_area, :available_for, :floor_no,
             :type_of, :age, :bedrooms, :bathrooms, :parking_area, :description, presence: true

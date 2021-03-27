@@ -1,9 +1,9 @@
 Rails.application.routes.draw do
+  devise_for :users
   root 'main#index'
   get 'logout', to: 'sessions#destroy'
   post 'properties/search', to: 'properties#search', as: 'search_properties'
-  resources :sessions, only: %i[new create]
-  resources :users, only: %i[new create edit update] do
+  resources :users do
     resources :addresses, except: %i[show]
     resources :properties
     resources :contracts

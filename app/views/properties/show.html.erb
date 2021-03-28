@@ -26,7 +26,7 @@
             <span class="sr-only">Next</span>
           </a>
         </div>
-      <% end %>
+      <% end %>     
     </div>
     <div class="col-md-4">
       <h3 class="sub_title">Property Description</h3>
@@ -50,7 +50,7 @@
         <h3>Full Address:<small> <%= address.full_address %></small></h3>
       <% end %>
     </div>
-    <% if current_user %>
+    <% if user_signed_in? && current_user != @property.user %>
       <%= link_to 'Buy', new_user_contract_path(current_user.id, property_id: @property.id), class: "btn btn-primary" %>
     <% end %>
   </div>

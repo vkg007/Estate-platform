@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   root 'main#index'
   get 'main#chat_room', to: 'main#chat_room', as: 'chat_room'
   post 'properties/search', to: 'properties#search', as: 'search_properties'
-  resources :users do
+  resources :users, only: %i[] do
     resources :addresses, except: %i[show]
     resources :properties
     resources :contracts

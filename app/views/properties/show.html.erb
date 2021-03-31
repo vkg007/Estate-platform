@@ -54,6 +54,9 @@
       <%= link_to 'Buy', new_user_contract_path(current_user.id, property_id: @property.id), class: "btn btn-primary" %>
     <% end %>
   </div>
+  <h3>Join in chat room with Seller</h3>
+  <%= link_to("Chat Room", chat_room_path, class: 'btn btn-success') %>
+
   <h3 class="my-4">Seller Details</h3>
   <div class="row">
     <div class="col-md-8">

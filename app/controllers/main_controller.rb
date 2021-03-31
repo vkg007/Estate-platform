@@ -7,4 +7,6 @@ class MainController < ApplicationController
                     Property.without_contract
                   end
   end
+
+  def chat_room; end
 end

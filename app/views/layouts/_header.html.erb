@@ -26,20 +26,20 @@
           Hi <%= current_user.first_name %>
         </a>
         <div class="dropdown-menu dropdown-menu-right dropdown-default"aria-labelledby="navbarDropdownMenuLink-333">
-          <a class="dropdown-item" <%= link_to 'Edit', edit_user_path(current_user.id) %></a>
+          <a class="dropdown-item" <%= link_to 'Edit', edit_user_registration_path(current_user.id) %></a>
           <a class="dropdown-item" <%= link_to 'My Properties', user_properties_path(current_user.id) %></a>
           <a class="dropdown-item" <%= link_to 'My Contracts', user_contracts_path(current_user.id) %></a>
           <a class="dropdown-item" <%= link_to 'My adresses', user_addresses_path(current_user.id) %></a>
           <a class="dropdown-item" <%= link_to 'Add Address', new_user_address_path(current_user.id) %></a>
-          <a class="dropdown-item" <%= link_to 'Log Out', logout_path %> </a>
+          <a class="dropdown-item" <%= link_to 'Log Out', destroy_user_session_path, method: :delete %> </a>
         </div>
       </li>
     <% else %>
       <li >
-        <a class="nav-link" <%= link_to 'Sign Up', new_user_path %></a>
+        <a class="nav-link" <%= link_to 'Sign Up', new_user_registration_path %></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" <%= link_to 'Login', new_session_path %></a>
+        <a class="nav-link" <%= link_to 'Login', new_user_session_path %></a>
       </li>
     <% end %>
   </ul>

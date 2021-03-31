@@ -1,4 +1,4 @@
-<%= render "shared/error_messages", target: @address %>
+<%= render "devise/shared/error_messages", resource: @address %>
 <div class="container h-100">
   <div class="row h-100 justify-content-center align-items-center">
     <%= form_for ([ @addressable, @address ]), id: "form_address", class: "col-12" do |f| %>

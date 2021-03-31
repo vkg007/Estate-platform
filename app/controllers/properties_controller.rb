@@ -37,7 +37,7 @@ class PropertiesController < ApplicationController
   def update
     if @property.update(property_params)
       flash[:success] = 'Property details Edited successfully.'
-      render :index
+      redirect_to root_path
     else
       render :edit
     end
@@ -78,7 +78,7 @@ class PropertiesController < ApplicationController
   def property_params
     params.require(:property).permit(:title, :built_area, :carpet_area, :posted_date, :available_for,
                                      :floor_no, :type_of, :total_floor, :age, :bedrooms, :bathrooms, :balcony,
-                                     :parking_area, :description)
+                                     :parking_area, :description, images: [])
   end
 
   def find_user_property

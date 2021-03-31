@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   root 'main#index'
   get 'logout', to: 'sessions#destroy'
   post 'properties/search', to: 'properties#search', as: 'search_properties'
-  resources :users do
+  resources :users, only: %i[] do
     resources :addresses, except: %i[show]
     resources :properties
     resources :contracts

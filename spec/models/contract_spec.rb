@@ -15,11 +15,4 @@ RSpec.describe Contract, type: :model do
     it { should belong_to(:user) }
     it { should belong_to(:property) }
   end
-
-  describe 'scopes' do
-    it 'return contract object with id with property field and user field' do
-      
-    end
-    it { should belong_to(:property) }
-  end
 end

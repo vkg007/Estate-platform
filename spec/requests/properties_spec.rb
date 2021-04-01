@@ -6,16 +6,16 @@ RSpec.describe 'Properties', type: :request do
       get properties_path
     end
     it 'is expected to assign Properties instance variable' do
-      expect(assigns[:properties]) == (User.find_by_id(1).properties)
+      expect(assigns[:properties]).to eq(User.find_by_id(1).properties)
     end
   end
 
   describe 'GET #new' do
     before do
-      get properties_path
+      get new_property_path
     end
     it 'is expected to assign Property as new instance variable' do
-      expect(assigns[:property]) == (User.find_by_id(1).properties.build)
+      expect(assigns[:property]).to eq(User.find_by_id(1).properties.build)
     end
   end
 
@@ -68,7 +68,7 @@ RSpec.describe 'Properties', type: :request do
                                        parking_area: 4780.0, description: 'Big lavish Bunglow',
                                        created_at: '2021-03-27 09:35:25.350819000 +0000',
                                        updated_at: '2021-03-27 09:35:25.350819000 +0000')
-                      }
+                       }
       let(:params) { { id: property.id } }
 
       it 'is expected to set Property instance variable' do
@@ -110,16 +110,16 @@ RSpec.describe 'Properties', type: :request do
                                        total_floor: 4, age: '2021-03-28', bedrooms: 3, bathrooms: 5, balcony: 4,
                                        parking_area: 4780.0, description: 'Big lavish Bunglow',
                                        created_at: '2021-03-27 09:35:25.350819000 +0000',
-                                       updated_at: '2021-03-27 09:35:25.350819000 +0000') 
-                      }
+                                       updated_at: '2021-03-27 09:35:25.350819000 +0000')
+                       }
 
       let(:params) { { id: property.id, property: { title: 'Bunglow 22 years updated', built_area: 140_000, user_id: 1, carpet_area: 35_000.0,
                                                     posted_date: nil, available_for: 'bachelor', floor_no: 4, type_of: 'bunglow',
                                                     total_floor: 4, age: '2021-03-28', bedrooms: 3, bathrooms: 5, balcony: 4,
                                                     parking_area: 4780.0, description: 'Big lavish Bunglow',
                                                     created_at: '2021-03-27 09:35:25.350819000 +0000',
-                                                    updated_at: '2021-03-27 09:35:25.350819000 +0000' } } 
-                                                  }
+                                                    updated_at: '2021-03-27 09:35:25.350819000 +0000' } }
+                     }
 
       context 'when data is provided is valid' do
         it 'is expected to update Property' do
@@ -158,11 +158,11 @@ RSpec.describe 'Properties', type: :request do
   describe 'Delete #destroy' do
     before do
       property = Property.create(title: 'Bunglow 22 years new', built_area: 140_000, user_id: 1, carpet_area: 35_000.0,
-                                  posted_date: nil, available_for: 'bachelor', floor_no: 4, type_of: 'bunglow',
-                                  total_floor: 4, age: '2021-03-28', bedrooms: 3, bathrooms: 5, balcony: 4,
-                                  parking_area: 4780.0, description: 'Big lavish Bunglow',
-                                  created_at: '2021-03-27 09:35:25.350819000 +0000',
-                                  updated_at: '2021-03-27 09:35:25.350819000 +0000')
+                                 posted_date: nil, available_for: 'bachelor', floor_no: 4, type_of: 'bunglow',
+                                 total_floor: 4, age: '2021-03-28', bedrooms: 3, bathrooms: 5, balcony: 4,
+                                 parking_area: 4780.0, description: 'Big lavish Bunglow',
+                                 created_at: '2021-03-27 09:35:25.350819000 +0000',
+                                 updated_at: '2021-03-27 09:35:25.350819000 +0000')
       delete Property.find(property.id)
     end
 
